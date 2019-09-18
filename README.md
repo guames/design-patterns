@@ -1,6 +1,6 @@
 # All Design Patterns 
 
-### Behavioral Patterns
+## Behavioral Patterns
 #### Command
 patterns.behavioral.command.RunCommand.main(args);
 #### Interpreter
@@ -22,7 +22,7 @@ patterns.behavioral.templatemethod.RunTemplateMethod.main(args);
 #### Visitor
 patterns.behavioral.visitor.RunVisitor.main(args);
 
-### Creational Patterns 
+## Creational Patterns 
 #### Abstractfactory
 patterns.creational.abstractfactory.RunAbstractFactory.main(args);
 #### Builder
@@ -50,4 +50,5 @@ patterns.structural.flyweight.RunFlyweight.main(args);
 #### Proxy
 patterns.structural.proxy.RunProxy.main(args);
 
-Reference from Book "Java Design Patterns" by Rohit Joshi
+
+## Reference from Book "Java Design Patterns" by Rohit Joshi
