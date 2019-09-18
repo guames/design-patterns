@@ -1,7 +1,7 @@
 # All Design Patterns 
 
 ## Behavioral Patterns
-#### Command
+#### Chain Of Responsability
 ###### Call:
 patterns.behavioral.chainresponsability.RunChainResponsability.main(args);
 ###### When you use this pattern:
@@ -64,10 +64,16 @@ patterns.creational.abstractfactory.RunAbstractFactory.main(args);
 ###### Call:
 patterns.creational.builder.RunBuilder.main(args);
 ###### When you use this pattern:
+* The algorithm for creating a complex object should be independent of the parts that make up the object and how they’re
+assembled.
+* The construction process must allow different representations for the object that’s constructed.
 #### Factorymethod
 ###### Call:
 patterns.creational.factorymethod.RunFactoryMethod.main(args);
 ###### When you use this pattern:
+* A class can’t anticipate the class of objects it must create.
+* A class wants its subclasses to specify the objects it creates.
+* Classes delegate responsibility to one of several helper subclasses, and you want to localize the knowledge of which helper subclass is the delegate.
 #### Prototype
 ###### Call:
 patterns.creational.prototype.RunPrototype.main(args);
@@ -120,6 +126,11 @@ then you can simplify the dependencies between them by making them communicate w
 ###### Call:
 patterns.structural.flyweight.RunFlyweight.main(args);
 ###### When you use this pattern:
+* An application uses a large number of objects.
+* Storage costs are high because of the sheer quantity of objects.
+* Most object state can be made extrinsic.
+* Many groups of objects may be replaced by relatively few shared objects once extrinsic state is removed.
+* The application doesn’t depend on object identity. Since flyweight objects may be shared, identity tests will return true for conceptually distinct objects.
 #### Proxy
 ###### Call:
 patterns.structural.proxy.RunProxy.main(args);
