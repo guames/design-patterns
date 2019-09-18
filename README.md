@@ -1,4 +1,4 @@
-# All Design Patterns 
+# This especs is from a book, in last line of this document there are informations about this book.  
 
 ## Behavioral Patterns
 #### Chain Of Responsability
