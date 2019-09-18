@@ -63,6 +63,8 @@ patterns.creational.prototype.RunPrototype.main(args);
 ###### Call:
 patterns.creational.singleton.RunSingleton.main(args);
 ###### When you use this pattern:
+* There must be exactly one instance of a class, and it must be accessible to clients from a well-known access point.
+* When the sole instance should be extensible by sub-classing, and clients should be able to use an extended instance without modifying their code.
 
 ## Structural Patterns
 #### Adapter
@@ -77,10 +79,17 @@ patterns.structural.adapter.RunAdapter.main(args);
 ###### Call:
 patterns.structural.bridge.RunBridge.main(args);
 ###### When you use this pattern:
+* You want to avoid a permanent binding between an abstraction and its implementation. This might be the case, for example,
+when the implementation must be selected or switched at run-time.
+* Both the abstractions and their implementations should be extensible by sub-classing. In this case, the Bridge pattern lets you combine the different abstractions and implementations and extend them independently.
+* Changes in the implementation of an abstraction should have no impact on clients; that is, their code should not have to be recompiled.
+* You want to share an implementation among multiple objects (perhaps using reference counting), and this fact should be hidden from the client.
 #### Composite
 ###### Call:
 patterns.structural.composite.RunComposite.main(args);
 ###### When you use this pattern:
+* When you want to represent part-whole hierarchies of objects.
+* When you want clients to be able to ignore the difference between compositions of objects and individual objects. Clients will treat all objects in the composite structure uniformly.
 #### Decorator
 ###### Call:
 patterns.structural.decorator.RunDecorator.main(args);
