@@ -12,14 +12,32 @@ patterns.behavioral.chainresponsability.RunChainResponsability.main(args);
 ###### Call:
 patterns.behavioral.command.RunCommand.main(args);
 ###### When you use this pattern:
+* Parameterize objects by an action to perform.
+* Specify, queue, and execute requests at different times. A Command object can have a lifetime independent of the original
+request. If the receiver of a request can be represented in an address space-independent way, then you can transfer a command object for the request to a different process and fulfill the request there.
+* Support undo. The Command’s Execute operation can store state for reversing its effects in the command itself. The
+Command interface must have an added Un-execute operation that reverses the effects of a previous call to Execute. Executed commands are stored in a history list. Unlimited-level undo and redo is achieved by traversing this list backwards and forwards calling Un-execute and Execute, respectively.
+* Support logging changes so that they can be reapplied in case of a system crash. By augmenting the Command interface
+with load and store operations, you can keep a persistent log of changes. Recovering from a crash involves reloading logged
+commands from disk and re-executing them with the Execute operation.
+* Structure a system around high-level operations built on primitives operations. Such a structure is common in information
+systems that support transactions. A transaction encapsulates a set of changes to data. The Command pattern offers a way to
+model transactions. Commands have a common interface, letting you invoke all transactions the same way. The pattern also
+makes it easy to extend the system with new transactions.
 #### Interpreter
 ###### Call:
 patterns.behavioral.interpreter.RunInterpreter.main(args);
 ###### When you use this pattern:
+* The grammar is simple. For complex grammars, the class hierarchy for the grammar becomes large and unmanageable. Tools
+such as parser generators are a better alternative in such cases. They can interpret expressions without building abstract syntax trees, which can save space and possibly time.
+* Efficiency is not a critical concern. The most efficient interpreters are usually not implemented by interpreting parse trees directly but by first translating them into another form. For example, regular expressions are often transformed into state machines. But even then, the translator can be implemented by the Interpreter pattern, so the pattern is still applicable.
 #### Iterator
 ###### Call:
 patterns.behavioral.iterator.RunIterator.main(args);
 ###### When you use this pattern:
+* To access an aggregate object’s contents without exposing its internal representation.
+* To support multiple traversals of aggregate objects.
+* To provide a uniform interface for traversing different aggregate structures (that is, to support polymorphic iteration).
 #### Mediator
 ###### Call:
 patterns.behavioral.mediator.RunMediator.main(args);
@@ -31,6 +49,8 @@ patterns.behavioral.mediator.RunMediator.main(args);
 ###### Call:
 patterns.behavioral.memento.RunMemento.main(args);
 ###### When you use this pattern:
+* A snapshot of (some portion of) an object’s state must be saved so that it can be restored to that state later, and
+* A direct interface to obtaining the state would expose implementation details and break the object’s encapsulation.
 #### Observer
 ###### Call:
 patterns.behavioral.observer.RunObserver.main(args);
@@ -42,24 +62,42 @@ patterns.behavioral.observer.RunObserver.main(args);
 ###### Call:
 patterns.behavioral.state.RunState.main(args);
 ###### When you use this pattern:
+* An object’s behavior depends on its state, and it must change its behavior at run-time depending on that state.
+* Operations have large, multipart conditional statements that depend on the object’s state. This state is usually represented by one or more enumerated constants. Often, several operations will contain this same conditional structure. The State pattern puts each branch of the conditional in a separate class. This lets you treat the object’s state as an object in its own right that can vary independently from other objects.
 #### Strategy
 ###### Call:
 patterns.behavioral.strategy.RunStrategy.main(args);
 ###### When you use this pattern:
+* Many related classes differ only in their behavior. Strategies provide a way to configure a class with one of many behaviors.
+* You need different variants of an algorithm. For example, you might define algorithms reflecting different space/time trade-offs. Strategies can be used when these variants are implemented as a class hierarchy of algorithms.
+* An algorithm uses data that clients shouldn’t know about. Use the Strategy pattern to avoid exposing complex, algorithm-
+specific data structures.
+* A class defines many behaviors, and these appear as multiple conditional statements in its operations. Instead of many condi-tionals, move related conditional branches into their own Strategy class.
 #### Templatemethod
 ###### Call:
 patterns.behavioral.templatemethod.RunTemplateMethod.main(args);
 ###### When you use this pattern:
+* To implement the invariant parts of an algorithm once and leave it up to subclasses to implement the behavior that can vary.
+* When common behavior among subclasses should be factored and localized in a common class to avoid code duplication. You
+first identify the differences in the existing code and then separate the differences into new operations. Finally, you replace the differing code with a template method that calls one of these new operations.
+* To control subclasses extensions. You can define a template method that calls "hook" operations (see Consequences) at specific points, thereby permitting extensions only at those points.
 #### Visitor
 ###### Call:
 patterns.behavioral.visitor.RunVisitor.main(args);
 ###### When you use this pattern:
+* An object structure contains many classes of objects with differing interfaces, and you want to perform operations on these objects that depend on their concrete classes.
+* Many distinct and unrelated operations need to be performed on objects in an object structure, and you want to avoid "polluting" their classes with these operations. Visitor lets you keep related operations together by defining them in one class. When the object structure is shared by many applications, use Visitor to put operations in just those applications that need them.
+* The classes defining the object structure rarely change, but you often want to define new operations over the structure. Changing the object structure classes requires redefining the interface to all visitors, which is potentially costly. If the object structure classes change often, then it’s probably better to define the operations in those classes.
 
 ## Creational Patterns 
 #### Abstractfactory
 ###### Call:
 patterns.creational.abstractfactory.RunAbstractFactory.main(args);
 ###### When you use this pattern:
+* A system should be independent of how its products are created, composed, and represented.
+* A system should be configured with one of multiple families of products.
+* A family of related product objects is designed to be used together, and you need to enforce this constraint.
+* You want to provide a class library of products, and you want to reveal just their interfaces, not their implementations.
 #### Builder
 ###### Call:
 patterns.creational.builder.RunBuilder.main(args);
@@ -78,6 +116,9 @@ patterns.creational.factorymethod.RunFactoryMethod.main(args);
 ###### Call:
 patterns.creational.prototype.RunPrototype.main(args);
 ###### When you use this pattern:
+* When the classes to instantiate are specified at run-time, for example, by dynamic loading; or
+* To avoid building a class hierarchy of factories that parallels the class hierarchy of products; or
+* When instances of a class can have one of only a few different combinations of state. It may be more convenient to install a corresponding number of prototypes and clone them rather than instantiating the class manually, each time with the appropriate state.
 #### Singleton
 ###### Call:
 patterns.creational.singleton.RunSingleton.main(args);
@@ -112,6 +153,10 @@ patterns.structural.composite.RunComposite.main(args);
 ###### Call:
 patterns.structural.decorator.RunDecorator.main(args);
 ###### When you use this pattern:
+* To add responsibilities to individual objects dynamically and transparently, that is, without affecting other objects.
+* For responsibilities that can be withdrawn.
+* When extension by sub-classing is impractical. Sometimes a large number of independent extensions are possible and would
+produce an explosion of subclasses to support every combination. Or a class definition may be hidden or otherwise unavailable for sub-classing.
 #### Facade
 ###### Call:
 patterns.structural.facade.RunFacade.main(args);
