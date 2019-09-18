@@ -1,4 +1,4 @@
-# This especs is from a book, in last line of this document there are informations about this book.  
+# This especs is from a book, there are any informations about this book in last line of this doc.  
 
 ## Behavioral Patterns
 #### Chain Of Responsability
