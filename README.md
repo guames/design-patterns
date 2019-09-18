@@ -1,4 +1,4 @@
 # design-patterns
 Repo to practice design patterns
 
-First  read-me 
+Reference from Java Design Patterns by Rohit Joshi
